@@ -1,0 +1,412 @@
+@import 'tailwindcss';
+
+/* =========================================================================
+   House of Memories — design tokens
+   Warm ivory surfaces, natural wood, restrained champagne/bronze accents.
+   ========================================================================= */
+@theme static {
+  /* Colour — surfaces */
+  --color-ivory-50: #fbf8f2;
+  --color-ivory-100: #f6f1e7;
+  --color-ivory-200: #ece4d3;
+  --color-ivory-300: #ded3bc;
+
+  /* Colour — wood */
+  --color-wood-300: #b99b7c;
+  --color-wood-500: #8a6a49;
+  --color-wood-700: #5e4630;
+  --color-wood-900: #3a2b1d;
+
+  /* Colour — champagne / bronze (accent) */
+  --color-champagne-300: #e0d0aa;
+  --color-champagne-500: #c4aa78;
+  --color-bronze-500: #9a7440;
+  --color-bronze-700: #6b4f2c;
+
+  /* Colour — muted sage (secondary, success) */
+  --color-sage-100: #e6e9dc;
+  --color-sage-500: #7c8467;
+  --color-sage-700: #54604a;
+
+  /* Colour — text */
+  --color-ink: #2d261f;
+  --color-ink-soft: #55493c;
+  --color-ink-mute: #716655;
+
+  /* Colour — structure & feedback */
+  --color-line: #ddd2bd;
+  --color-line-strong: #c9bb9f;
+  --color-danger: #8f4337;
+  --color-danger-soft: #f3e3de;
+
+  --font-serif: 'Cormorant Garamond', 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+
+  /* Shadows — controlled, warm */
+  --shadow-sm: 0 1px 2px rgb(58 43 29 / 0.06);
+  --shadow-md: 0 1px 2px rgb(58 43 29 / 0.05), 0 10px 24px -14px rgb(58 43 29 / 0.22);
+  --shadow-lg: 0 2px 4px rgb(58 43 29 / 0.05), 0 28px 56px -28px rgb(58 43 29 / 0.35);
+}
+
+:root {
+  /* Typography scale (families live in @theme above) */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 520ms;
+  --duration-scene: 900ms;
+
+  /* Layout */
+  --measure: 62ch;
+  --container: 72rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --duration-scene: 1ms;
+  }
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+@layer base {
+  html {
+    background: var(--color-ivory-50);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-size: var(--fs-base);
+    line-height: 1.65;
+    background:
+      radial-gradient(60rem 30rem at 50% -10%, rgb(224 208 170 / 0.28), transparent 70%),
+      var(--color-ivory-50);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--color-wood-900);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--color-bronze-700);
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  a:hover {
+    color: var(--color-wood-900);
+  }
+
+  ::selection {
+    background: var(--color-champagne-300);
+    color: var(--color-wood-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bronze-500);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  button {
+    font: inherit;
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* =========================================================================
+   Components
+   ========================================================================= */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-bronze-700);
+  }
+
+  .prose-memorial {
+    max-width: var(--measure);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+    white-space: pre-line;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition:
+      background-color var(--duration-base) var(--ease-out),
+      color var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-base) var(--ease-out);
+  }
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .btn:disabled {
+    opacity: 0.55;
+  }
+  .btn-primary {
+    background: var(--color-wood-700);
+    color: var(--color-ivory-50);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-wood-900);
+    color: var(--color-ivory-50);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-wood-700);
+    border-color: var(--color-line-strong);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--color-ivory-100);
+    border-color: var(--color-bronze-500);
+    color: var(--color-wood-900);
+  }
+  .btn-quiet {
+    background: transparent;
+    color: var(--color-ink-soft);
+    padding-inline: 0.9rem;
+  }
+  .btn-quiet:hover:not(:disabled) {
+    background: var(--color-ivory-200);
+    color: var(--color-wood-900);
+  }
+  .btn-danger {
+    background: var(--color-danger);
+    color: var(--color-ivory-50);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: #75342a;
+    color: var(--color-ivory-50);
+  }
+  .btn-sm {
+    min-height: 2.25rem;
+    padding: 0.3rem 1rem;
+    font-size: var(--fs-xs);
+  }
+
+  .card {
+    background: var(--color-ivory-50);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-wood-700);
+  }
+  .field-hint {
+    font-size: var(--fs-xs);
+    color: var(--color-ink-mute);
+  }
+  .field-error {
+    margin-top: 0.35rem;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--color-danger);
+  }
+  .input {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-md);
+    background: #fffdf9;
+    color: var(--color-ink);
+    font: inherit;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .input:hover {
+    border-color: var(--color-wood-300);
+  }
+  .input:focus-visible {
+    outline: none;
+    border-color: var(--color-bronze-500);
+    box-shadow: 0 0 0 3px rgb(196 170 120 / 0.38);
+  }
+  .input[aria-invalid='true'] {
+    border-color: var(--color-danger);
+  }
+  textarea.input {
+    min-height: 11rem;
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .notice {
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-ivory-100);
+    font-size: var(--fs-sm);
+    color: var(--color-ink-soft);
+  }
+  .notice-error {
+    border-color: #d9b4aa;
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+  }
+  .notice-success {
+    border-color: #b9c1a6;
+    background: var(--color-sage-100);
+    color: var(--color-sage-700);
+  }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-ivory-200),
+      var(--color-ivory-100),
+      var(--color-ivory-200)
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s var(--ease-in-out) infinite;
+    border-radius: var(--radius-md);
+  }
+
+  .arch {
+    border-radius: 999px 999px var(--radius-md) var(--radius-md);
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: var(--color-champagne-500);
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, var(--color-champagne-500));
+  }
+  .divider-ornament::after {
+    background: linear-gradient(270deg, transparent, var(--color-champagne-500));
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-in {
+  animation: rise var(--duration-slow) var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

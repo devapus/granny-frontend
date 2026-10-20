@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="House of Memories">
+  <rect width="64" height="64" rx="14" fill="#F6F1E7"/>
+  <path d="M12 31 32 15l20 16" fill="none" stroke="#8A6A3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 29v20h30V29" fill="none" stroke="#5E4630" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M28 49V37a4 4 0 0 1 8 0v12" fill="#C9B07E" stroke="#5E4630" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
