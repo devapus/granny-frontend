@@ -34,7 +34,7 @@ export function PhotoPicker({
   }, [file])
 
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={id} className="field-label">
         {label} <span className="font-normal text-ink-mute">(optional)</span>
       </label>
@@ -43,18 +43,22 @@ export function PhotoPicker({
           {hint}
         </p>
       )}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
         {previewUrl ? (
-          <img src={previewUrl} alt={`Preview of ${label.toLowerCase()}`} className="h-20 w-20 rounded-lg border border-line object-cover" />
+          <img
+            src={previewUrl}
+            alt={`Preview of ${label.toLowerCase()}`}
+            className="h-20 w-20 shrink-0 rounded-lg border border-line object-cover"
+          />
         ) : (
           <span
             aria-hidden="true"
-            className="flex h-20 w-20 items-center justify-center rounded-lg border border-dashed border-line-strong text-wood-300"
+            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg border border-dashed border-line-strong text-wood-300"
           >
             <ImagePlus />
           </span>
         )}
-        <div className="flex flex-col items-start gap-2">
+        <div className="flex min-w-0 flex-1 flex-col items-stretch gap-2 sm:items-start">
           <input
             ref={inputRef}
             id={id}
@@ -63,13 +67,13 @@ export function PhotoPicker({
             disabled={disabled}
             aria-describedby={hint ? `${id}-hint` : undefined}
             aria-invalid={error ? true : undefined}
-            className="max-w-full text-sm text-ink-soft file:mr-3 file:cursor-pointer file:rounded-full file:border file:border-line-strong file:bg-transparent file:px-4 file:py-2 file:text-sm file:font-semibold file:text-wood-700 hover:file:bg-ivory-100"
+            className="photo-file-input w-full max-w-full text-sm text-ink-soft"
             onChange={(e) => onChange(e.target.files?.[0] ?? null)}
           />
           {file && (
             <button
               type="button"
-              className="btn btn-quiet btn-sm"
+              className="btn btn-quiet btn-sm self-start"
               onClick={() => {
                 if (inputRef.current) inputRef.current.value = ''
                 onChange(null)

@@ -288,7 +288,10 @@
     color: var(--color-danger);
   }
   .input {
+    box-sizing: border-box;
+    display: block;
     width: 100%;
+    max-width: 100%;
     min-height: 2.75rem;
     padding: 0.6rem 0.85rem;
     border: 1px solid var(--color-line-strong);
@@ -296,6 +299,8 @@
     background: #fffdf9;
     color: var(--color-ink);
     font: inherit;
+    /* ≥16px avoids iOS zoom-on-focus while staying readable on mobile. */
+    font-size: max(1rem, var(--fs-sm));
     transition:
       border-color var(--duration-fast) var(--ease-out),
       box-shadow var(--duration-fast) var(--ease-out);
@@ -311,10 +316,42 @@
   .input[aria-invalid='true'] {
     border-color: var(--color-danger);
   }
+  select.input {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-wood-500) 50%),
+      linear-gradient(135deg, var(--color-wood-500) 50%, transparent 50%);
+    background-position:
+      calc(100% - 1.15rem) calc(50% - 0.2rem),
+      calc(100% - 0.85rem) calc(50% - 0.2rem);
+    background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
+    background-repeat: no-repeat;
+    padding-right: 2.25rem;
+  }
   textarea.input {
-    min-height: 11rem;
+    min-height: 10rem;
     line-height: 1.6;
     resize: vertical;
+  }
+
+  /* Native file controls overflow easily on narrow viewports; keep them in the card. */
+  .photo-file-input {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .photo-file-input::file-selector-button {
+    margin-right: 0.75rem;
+    cursor: pointer;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+    background: transparent;
+    padding: 0.45rem 0.95rem;
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-wood-700);
+  }
+  .photo-file-input:hover:not(:disabled)::file-selector-button {
+    background: var(--color-ivory-100);
   }
 
   .notice {
