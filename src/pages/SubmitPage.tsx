@@ -203,23 +203,23 @@ export default function SubmitPage() {
   // ------------------------------------------------------------ render
   if (status.kind === 'success') {
     return (
-      <div className="container-page max-w-2xl py-20">
+      <div className="container-page max-w-2xl py-12 sm:py-20">
         <div
           ref={statusRef}
           tabIndex={-1}
           role="status"
-          className="card p-8 text-center outline-none sm:p-12"
+          className="card p-6 text-center outline-none sm:p-12"
         >
           <CheckCircle2 className="mx-auto text-sage-500" size={40} aria-hidden="true" />
-          <h1 className="mt-4 text-4xl">Thank you</h1>
-          <p className="mt-4 text-lg text-ink-soft">{SUCCESS_MESSAGE}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/tributes" className="btn btn-primary">
+          <h1 className="mt-4 text-3xl sm:text-4xl">Thank you</h1>
+          <p className="mt-4 text-base text-ink-soft sm:text-lg">{SUCCESS_MESSAGE}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+            <Link to="/tributes" className="btn btn-primary w-full sm:w-auto">
               Read other tributes
             </Link>
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary w-full sm:w-auto"
               onClick={() => {
                 setSubmissionId(newSubmissionId())
                 setStatus({ kind: 'idle' })
@@ -236,7 +236,7 @@ export default function SubmitPage() {
   const closed = config.data && !config.data.tributeSubmissionsOpen
 
   return (
-    <div className="container-page max-w-3xl py-14 md:py-20">
+    <div className="container-page max-w-3xl py-10 sm:py-14 md:py-20">
       <PageHeading eyebrow="Leave a tribute" title="Share a memory">
         <p>
           A story, a kindness, a moment you’ll always remember. The family reads every tribute before it appears
@@ -244,7 +244,7 @@ export default function SubmitPage() {
         </p>
       </PageHeading>
 
-      <div className="mt-10">
+      <div className="mt-8 min-w-0 sm:mt-10">
         {config.isPending ? (
           <LoadingBlock label="Loading form" lines={4} />
         ) : config.isError ? (
@@ -255,9 +255,9 @@ export default function SubmitPage() {
             <p className="mt-1">Thank you for your kindness. Please check back later, or read the tributes already shared.</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="card space-y-7 p-6 sm:p-10" aria-label="Tribute form">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
+          <form onSubmit={onSubmit} noValidate className="card min-w-0 space-y-6 p-4 sm:space-y-7 sm:p-8 md:p-10" aria-label="Tribute form">
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+              <div className="min-w-0">
                 <label htmlFor="fullName" className="field-label">
                   Your name
                 </label>
@@ -278,7 +278,7 @@ export default function SubmitPage() {
                   </p>
                 )}
               </div>
-              <div>
+              <div className="min-w-0">
                 <label htmlFor="email" className="field-label">
                   Email address
                 </label>
@@ -304,8 +304,8 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+              <div className="min-w-0">
                 <label htmlFor="relationshipCategory" className="field-label">
                   How did you know her?
                 </label>
@@ -332,7 +332,7 @@ export default function SubmitPage() {
                 )}
               </div>
               {needsCustom && (
-                <div>
+                <div className="min-w-0">
                   <label htmlFor="customRelationship" className="field-label">
                     Tell us how you knew her
                   </label>
@@ -355,7 +355,7 @@ export default function SubmitPage() {
               )}
             </div>
 
-            <div>
+            <div className="min-w-0">
               <label htmlFor="tributeText" className="field-label">
                 Your tribute
               </label>
@@ -368,9 +368,12 @@ export default function SubmitPage() {
                 aria-describedby={`tributeText-count${errors.tributeText ? ' tributeText-error' : ''}`}
                 required
               />
-              <div className="mt-2 flex items-center justify-between gap-4" id="tributeText-count">
+              <div
+                className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+                id="tributeText-count"
+              >
                 <div
-                  className="h-1.5 flex-1 overflow-hidden rounded-full bg-ivory-200"
+                  className="h-1.5 w-full min-w-0 flex-1 overflow-hidden rounded-full bg-ivory-200"
                   role="progressbar"
                   aria-label="Progress toward the minimum tribute length"
                   aria-valuemin={0}
@@ -382,7 +385,7 @@ export default function SubmitPage() {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <p className="field-hint whitespace-nowrap" aria-live="polite">
+                <p className="field-hint shrink-0 sm:text-right" aria-live="polite">
                   {length < limits.minLength
                     ? `${length} / ${limits.minLength} minimum`
                     : `${length.toLocaleString()} / ${limits.maxLength.toLocaleString()} characters`}
@@ -395,8 +398,8 @@ export default function SubmitPage() {
               )}
             </div>
 
-            <fieldset className="space-y-6 rounded-lg border border-line p-5">
-              <legend className="px-2 font-serif text-xl text-wood-900">Photographs</legend>
+            <fieldset className="min-w-0 space-y-5 rounded-lg border border-line p-4 sm:space-y-6 sm:p-5">
+              <legend className="px-1 font-serif text-lg text-wood-900 sm:px-2 sm:text-xl">Photographs</legend>
               <p className="field-hint">
                 Optional. If you have a photo of yourself, or one with her, you’re welcome to share it.
               </p>
@@ -420,11 +423,11 @@ export default function SubmitPage() {
                 <input
                   id="photoDisplayPermission"
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[var(--color-bronze-500)]"
+                  className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-bronze-500)]"
                   checked={values.photoDisplayPermission}
                   onChange={(e) => set('photoDisplayPermission', e.target.checked)}
                 />
-                <span>You may display my photograph(s) alongside my tribute in the memorial.</span>
+                <span className="min-w-0">You may display my photograph(s) alongside my tribute in the memorial.</span>
               </label>
               {storageUnavailable && (
                 <div role="alert" className="notice">
@@ -434,7 +437,7 @@ export default function SubmitPage() {
                   </p>
                   <button
                     type="button"
-                    className="btn btn-secondary btn-sm mt-3"
+                    className="btn btn-secondary btn-sm mt-3 w-full sm:w-auto"
                     disabled={submitting}
                     onClick={() => {
                       setFiles({ contributor: null, grandmother: null })
@@ -448,18 +451,18 @@ export default function SubmitPage() {
               )}
             </fieldset>
 
-            <div>
+            <div className="min-w-0">
               <label className="flex items-start gap-3 text-sm text-ink-soft">
                 <input
                   id="acknowledgment"
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[var(--color-bronze-500)]"
+                  className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-bronze-500)]"
                   checked={values.acknowledgment}
                   onChange={(e) => set('acknowledgment', e.target.checked)}
                   aria-invalid={errors.acknowledgment ? true : undefined}
                   aria-describedby={errors.acknowledgment ? 'acknowledgment-error' : undefined}
                 />
-                <span>
+                <span className="min-w-0">
                   I understand my tribute will be reviewed by the family before it is published, and that my name
                   and words may be shown publicly. My email address will stay private.
                 </span>
@@ -472,16 +475,16 @@ export default function SubmitPage() {
             </div>
 
             {status.kind === 'error' && (
-              <div role="alert" className="notice notice-error">
+              <div role="alert" className="notice notice-error break-words">
                 {status.message}
               </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-4">
-              <button type="submit" className="btn btn-primary" disabled={submitting}>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <button type="submit" className="btn btn-primary w-full sm:w-auto" disabled={submitting}>
                 {submitting ? status.step : status.kind === 'error' && status.recoverable ? 'Try again' : 'Submit tribute'}
               </button>
-              <p className="field-hint">Your tribute won’t appear until it has been reviewed.</p>
+              <p className="field-hint text-center sm:text-left">Your tribute won’t appear until it has been reviewed.</p>
             </div>
           </form>
         )}
