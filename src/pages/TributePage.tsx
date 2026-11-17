@@ -10,8 +10,8 @@ export default function TributePage() {
   const tribute = useTribute(id ?? null)
 
   return (
-    <div className="container-page max-w-3xl py-14 md:py-20">
-      <Link to="/tributes" className="btn btn-quiet btn-sm -ml-3 mb-6">
+    <div className="container-page max-w-3xl min-w-0 py-10 sm:py-14 md:py-20">
+      <Link to="/tributes" className="btn btn-quiet btn-sm mb-6 -ml-1 sm:-ml-3">
         <ArrowLeft size={16} aria-hidden="true" /> All tributes
       </Link>
       {tribute.isPending ? (
@@ -26,7 +26,7 @@ export default function TributePage() {
           <ErrorNotice title="This tribute could not be loaded." error={tribute.error} onRetry={() => void tribute.refetch()} />
         )
       ) : (
-        <article className="card p-6 sm:p-12">
+        <article className="card min-w-0 overflow-hidden p-4 sm:p-8 md:p-12">
           <TributeBody tribute={tribute.data} />
         </article>
       )}

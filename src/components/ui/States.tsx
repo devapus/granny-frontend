@@ -53,8 +53,8 @@ export function PageHeading({ eyebrow, title, children }: { eyebrow?: string; ti
   return (
     <header className="mx-auto max-w-3xl text-center">
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h1 className="text-4xl sm:text-5xl">{title}</h1>
-      {children ? <div className="mt-4 text-lg text-ink-soft">{children}</div> : null}
+      <h1 className="text-3xl break-words sm:text-4xl md:text-5xl">{title}</h1>
+      {children ? <div className="mt-4 text-base text-ink-soft sm:text-lg">{children}</div> : null}
     </header>
   )
 }
