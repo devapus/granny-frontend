@@ -27,6 +27,12 @@ test('mobile: tribute list and detail pages do not overflow horizontally', async
   await page.goto('/tributes')
   await expect(page.getByRole('heading', { name: /words from those who loved her/i })).toBeVisible()
   expect(await page.evaluate(horizontalOverflow)).toBeLessThanOrEqual(0)
+  // Long names must not widen the tribute grid past the viewport.
+  const cardWiderThanViewport = await page.evaluate(() => {
+    const vw = window.innerWidth
+    return [...document.querySelectorAll('article.card')].some((el) => el.getBoundingClientRect().width > vw - 8)
+  })
+  expect(cardWiderThanViewport).toBe(false)
 
   await page.goto('/tributes/t-child')
   await expect(page.getByRole('heading', { name: 'Susan Whitfield' })).toBeVisible()

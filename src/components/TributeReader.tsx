@@ -38,7 +38,7 @@ export function TributeBody({ tribute, headingId }: { tribute: PublicTribute; he
       </div>
       <div className="prose-memorial text-ink">{tribute.tributeText}</div>
       {photos.length > 0 && (
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-8 grid min-w-0 gap-4 sm:grid-cols-2">
           {photos.map((p) => (
             <li key={p.id} className="min-w-0">
               <figure className="min-w-0">

@@ -11,17 +11,21 @@ export function TributeCard({
   onRead: (tribute: PublicTribute, origin: OriginRect) => void
 }) {
   return (
-    <article className="card flex h-full min-w-0 flex-col p-5 transition-shadow duration-[var(--duration-base)] hover:shadow-md sm:p-6">
-      <header className="flex items-center gap-3">
+    <article className="card flex h-full w-full min-w-0 max-w-full flex-col overflow-hidden p-5 transition-shadow duration-[var(--duration-base)] hover:shadow-md sm:p-6">
+      <header className="flex min-w-0 items-start gap-3 sm:items-center">
         <div className="shrink-0">
           <TributeAvatar tribute={tribute} />
         </div>
-        <div className="min-w-0">
-          <h3 className="truncate text-lg sm:text-xl">{tribute.fullName}</h3>
-          <p className="eyebrow truncate">{tribute.relationshipLabel}</p>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-lg leading-snug break-words sm:truncate sm:text-xl sm:leading-tight">
+            {tribute.fullName}
+          </h3>
+          <p className="eyebrow mt-0.5 break-words sm:truncate">{tribute.relationshipLabel}</p>
         </div>
       </header>
-      <p className="mt-4 flex-1 break-words text-ink-soft">{preview(tribute.tributeText, 220)}</p>
+      <p className="mt-4 min-w-0 flex-1 break-words [overflow-wrap:anywhere] text-ink-soft">
+        {preview(tribute.tributeText, 220)}
+      </p>
       <div className="mt-5">
         <button
           type="button"
