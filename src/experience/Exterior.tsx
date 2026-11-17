@@ -5,20 +5,21 @@ import { DOOR, HOUSE } from './layout'
 import type { Quality, SceneRefsRef } from './sceneRefs'
 import { getWood } from './textures'
 
+/** Exterior palette: warm cottage + garden greens (interior keeps memorial lilac). */
 const C = {
-  wall: '#f3ecf8',
-  trim: '#fbf8fa',
-  roof: '#3e1c5e',
-  roofRidge: '#2a153f',
-  stone: '#b794d0',
-  porch: '#7a55a0',
-  glass: '#e8d5a8',
+  wall: '#e6dcc7',
+  trim: '#f5f0e3',
+  roof: '#5b4a3b',
+  roofRidge: '#463829',
+  stone: '#bfae92',
+  porch: '#a98d6c',
+  glass: '#f8dfa2',
   brass: '#cfae6a',
-  ground: '#b794d0',
-  path: '#e8ddf0',
-  trunk: '#3e1c5e',
-  leafA: '#7a55a0',
-  leafB: '#3e1c5e',
+  ground: '#8f9f72',
+  path: '#d9cfb8',
+  trunk: '#6d5339',
+  leafA: '#7d8a62',
+  leafB: '#6a7955',
 }
 
 // Triangular gable fill (front/back), extruded along z.
