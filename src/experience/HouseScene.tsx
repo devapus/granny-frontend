@@ -87,8 +87,8 @@ export function HouseScene({
 
   return (
     <>
-      <color attach="background" args={[outside ? '#e8dfca' : '#d9ccb2']} />
-      {outside && <fog attach="fog" args={['#e8dfca', 35, 95]} />}
+      <color attach="background" args={[outside ? '#f3ecf8' : '#e8ddf0']} />
+      {outside && <fog attach="fog" args={['#f3ecf8', 35, 95]} />}
       <PerformanceMonitor onDecline={onDowngrade} flipflops={2} />
       <Lights interior={!outside} quality={quality} />
       <CameraRig state={state} stations={stations} reduced={reduced} refs={refs} onExteriorDone={onExteriorDone} />

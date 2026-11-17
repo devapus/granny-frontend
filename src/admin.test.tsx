@@ -26,7 +26,7 @@ const pending: AdminTribute = {
 }
 
 const adminConfig = {
-  memorialTitle: 'House of Memories',
+  memorialTitle: 'House of memories and tribute',
   grandmotherDisplayName: 'Eleanor',
   portraitMediaId: null,
   introductoryMessage: 'Hello',

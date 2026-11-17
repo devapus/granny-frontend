@@ -2,42 +2,42 @@
 
 /* =========================================================================
    House of Memories — design tokens
-   Warm ivory surfaces, natural wood, restrained champagne/bronze accents.
+   Lilac surfaces, deep purple headings, gold frames (text uses dark gold).
    ========================================================================= */
 @theme static {
-  /* Colour — surfaces */
-  --color-ivory-50: #fbf8f2;
-  --color-ivory-100: #f6f1e7;
-  --color-ivory-200: #ece4d3;
-  --color-ivory-300: #ded3bc;
+  /* Colour — surfaces (lilac white / soft lilac) */
+  --color-ivory-50: #fbf8fa;
+  --color-ivory-100: #f3ecf8;
+  --color-ivory-200: #e8ddf0;
+  --color-ivory-300: #dccde8;
 
-  /* Colour — wood */
-  --color-wood-300: #b99b7c;
-  --color-wood-500: #8a6a49;
-  --color-wood-700: #5e4630;
-  --color-wood-900: #3a2b1d;
+  /* Colour — purple structure (headings, buttons, accents) */
+  --color-wood-300: #b794d0;
+  --color-wood-500: #7a55a0;
+  --color-wood-700: #3e1c5e;
+  --color-wood-900: #3e1c5e;
 
-  /* Colour — champagne / bronze (accent) */
-  --color-champagne-300: #e0d0aa;
-  --color-champagne-500: #c4aa78;
-  --color-bronze-500: #9a7440;
-  --color-bronze-700: #6b4f2c;
+  /* Colour — gold frames & dark-gold label text */
+  --color-champagne-300: #e8d5a8;
+  --color-champagne-500: #cfae6a;
+  --color-bronze-500: #cfae6a;
+  --color-bronze-700: #8a6825;
 
   /* Colour — muted sage (secondary, success) */
-  --color-sage-100: #e6e9dc;
-  --color-sage-500: #7c8467;
-  --color-sage-700: #54604a;
+  --color-sage-100: #e8edf0;
+  --color-sage-500: #6a7d72;
+  --color-sage-700: #4a5c52;
 
-  /* Colour — text */
-  --color-ink: #2d261f;
-  --color-ink-soft: #55493c;
-  --color-ink-mute: #716655;
+  /* Colour — text (dark plum / muted purple) */
+  --color-ink: #2a2233;
+  --color-ink-soft: #4a3f55;
+  --color-ink-mute: #7a55a0;
 
   /* Colour — structure & feedback */
-  --color-line: #ddd2bd;
-  --color-line-strong: #c9bb9f;
+  --color-line: #b794d0;
+  --color-line-strong: #9f76b8;
   --color-danger: #8f4337;
-  --color-danger-soft: #f3e3de;
+  --color-danger-soft: #f5e8e6;
 
   --font-serif: 'Cormorant Garamond', 'Libre Baskerville', Georgia, 'Times New Roman', serif;
   --font-sans: 'Source Sans 3', 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -48,10 +48,10 @@
   --radius-lg: 14px;
   --radius-xl: 24px;
 
-  /* Shadows — controlled, warm */
-  --shadow-sm: 0 1px 2px rgb(58 43 29 / 0.06);
-  --shadow-md: 0 1px 2px rgb(58 43 29 / 0.05), 0 10px 24px -14px rgb(58 43 29 / 0.22);
-  --shadow-lg: 0 2px 4px rgb(58 43 29 / 0.05), 0 28px 56px -28px rgb(58 43 29 / 0.35);
+  /* Shadows — controlled, lilac-tinted */
+  --shadow-sm: 0 1px 2px rgb(62 28 94 / 0.06);
+  --shadow-md: 0 1px 2px rgb(62 28 94 / 0.05), 0 10px 24px -14px rgb(62 28 94 / 0.18);
+  --shadow-lg: 0 2px 4px rgb(62 28 94 / 0.05), 0 28px 56px -28px rgb(62 28 94 / 0.28);
 }
 
 :root {
@@ -116,7 +116,7 @@
     font-size: var(--fs-base);
     line-height: 1.65;
     background:
-      radial-gradient(60rem 30rem at 50% -10%, rgb(224 208 170 / 0.28), transparent 70%),
+      radial-gradient(60rem 30rem at 50% -10%, rgb(183 148 208 / 0.22), transparent 70%),
       var(--color-ivory-50);
     -webkit-font-smoothing: antialiased;
   }
@@ -296,7 +296,7 @@
     padding: 0.6rem 0.85rem;
     border: 1px solid var(--color-line-strong);
     border-radius: var(--radius-md);
-    background: #fffdf9;
+    background: #fefcfe;
     color: var(--color-ink);
     font: inherit;
     /* ≥16px avoids iOS zoom-on-focus while staying readable on mobile. */
@@ -311,7 +311,7 @@
   .input:focus-visible {
     outline: none;
     border-color: var(--color-bronze-500);
-    box-shadow: 0 0 0 3px rgb(196 170 120 / 0.38);
+    box-shadow: 0 0 0 3px rgb(207 174 106 / 0.35);
   }
   .input[aria-invalid='true'] {
     border-color: var(--color-danger);

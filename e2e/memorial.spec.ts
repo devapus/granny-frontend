@@ -9,7 +9,7 @@ test.describe('memorial', () => {
   test('visitor enters the memorial, walks the walls and opens/closes a tribute', async ({ page }) => {
     await mockApi(page)
     await page.goto('/')
-    await expect(page.getByRole('heading', { level: 1, name: 'House of Memories' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: 'House of memories and tribute' })).toBeVisible()
 
     await page.getByRole('link', { name: 'Enter the house' }).first().click()
     await expect(page).toHaveURL(/\/experience$/)

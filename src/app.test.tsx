@@ -8,7 +8,7 @@ import { renderApp } from './test/utils'
 describe('app init & config loading', () => {
   it('loads the memorial config and shows the title, intro message and the Enter the house CTA', async () => {
     renderApp('/')
-    expect(await screen.findByRole('heading', { level: 1, name: 'House of Memories' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'House of memories and tribute' })).toBeInTheDocument()
     expect(await screen.findByText(fixtures.config.introductoryMessage)).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /enter the house/i })[0]).toHaveAttribute('href', '/experience')
     expect(screen.getByText(/in loving memory of Eleanor Whitfield/i)).toBeInTheDocument()

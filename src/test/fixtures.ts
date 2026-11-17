@@ -12,7 +12,7 @@ const tribute = (over: Partial<PublicTribute> & Pick<PublicTribute, 'id' | 'full
 })
 
 const config: PublicConfig = {
-  memorialTitle: 'House of Memories',
+  memorialTitle: 'House of memories and tribute',
   grandmotherDisplayName: 'Eleanor Whitfield',
   portrait: null,
   introductoryMessage: 'Step inside and discover the beautiful things my family and friends remember about me.',

@@ -6,19 +6,19 @@ import type { Quality, SceneRefsRef } from './sceneRefs'
 import { getWood } from './textures'
 
 const C = {
-  wall: '#e6dcc7',
-  trim: '#f5f0e3',
-  roof: '#5b4a3b',
-  roofRidge: '#463829',
-  stone: '#bfae92',
-  porch: '#a98d6c',
-  glass: '#f8dfa2',
-  brass: '#c2a263',
-  ground: '#9aa282',
-  path: '#d9cfb8',
-  trunk: '#6d5339',
-  leafA: '#7d8a62',
-  leafB: '#6a7955',
+  wall: '#f3ecf8',
+  trim: '#fbf8fa',
+  roof: '#3e1c5e',
+  roofRidge: '#2a153f',
+  stone: '#b794d0',
+  porch: '#7a55a0',
+  glass: '#e8d5a8',
+  brass: '#cfae6a',
+  ground: '#b794d0',
+  path: '#e8ddf0',
+  trunk: '#3e1c5e',
+  leafA: '#7a55a0',
+  leafB: '#3e1c5e',
 }
 
 // Triangular gable fill (front/back), extruded along z.

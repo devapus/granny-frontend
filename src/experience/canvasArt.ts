@@ -127,9 +127,9 @@ function coverDraw(ctx: CanvasRenderingContext2D, img: CanvasImageSource & { wid
 
 export function drawPortraitPlaceholder(ctx: CanvasRenderingContext2D, w: number, h: number, name: string) {
   const g = ctx.createLinearGradient(0, 0, 0, h)
-  g.addColorStop(0, '#efe5d0')
-  g.addColorStop(0.6, '#e5d8bd')
-  g.addColorStop(1, '#d3c2a0')
+  g.addColorStop(0, '#f3ecf8')
+  g.addColorStop(0.6, '#e8ddf0')
+  g.addColorStop(1, '#dccde8')
   ctx.fillStyle = g
   ctx.fillRect(0, 0, w, h)
   const glow = ctx.createRadialGradient(w / 2, h * 0.38, 0, w / 2, h * 0.38, w * 0.62)
@@ -180,7 +180,7 @@ export function drawPortraitPlaceholder(ctx: CanvasRenderingContext2D, w: number
   ctx.beginPath()
   ctx.arc(cx, cy, r, 0, Math.PI * 2)
   ctx.fill()
-  ctx.strokeStyle = '#c4aa78'
+  ctx.strokeStyle = '#cfae6a'
   ctx.lineWidth = w * 0.004
   ctx.beginPath()
   ctx.arc(cx, cy, r, 0, Math.PI * 2)
@@ -190,7 +190,7 @@ export function drawPortraitPlaceholder(ctx: CanvasRenderingContext2D, w: number
   ctx.globalAlpha = 0.6
   ctx.stroke()
   ctx.globalAlpha = 1
-  ctx.fillStyle = '#5e4630'
+  ctx.fillStyle = '#3e1c5e'
   ctx.font = `600 ${w * 0.13}px ${SERIF}`
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
@@ -234,11 +234,11 @@ export function drawPlaque(
   const h = PLAQUE_H
   ctx.clearRect(0, 0, w, h)
   const bg = ctx.createLinearGradient(0, 0, 0, h)
-  bg.addColorStop(0, '#fbf7ee')
-  bg.addColorStop(1, '#f1e9d8')
+  bg.addColorStop(0, '#fbf8fa')
+  bg.addColorStop(1, '#f3ecf8')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, w, h)
-  ctx.strokeStyle = '#c4aa78'
+  ctx.strokeStyle = '#cfae6a'
   ctx.lineWidth = 3
   ctx.strokeRect(14, 14, w - 28, h - 28)
   ctx.lineWidth = 1
@@ -247,7 +247,7 @@ export function drawPlaque(
   ctx.textBaseline = 'alphabetic'
 
   if (!tribute) {
-    ctx.fillStyle = '#6b4f2c'
+    ctx.fillStyle = '#8a6825'
     ctx.font = `italic 500 40px ${SERIF}`
     const lines = wrapLines(ctx, emptyText, w - 140, 4)
     lines.forEach((l, i) => ctx.fillText(l, w / 2, h / 2 - 30 + i * 52))
@@ -269,20 +269,20 @@ export function drawPlaque(
     pg.addColorStop(1, '#d4c3a1')
     ctx.fillStyle = pg
     ctx.fillRect(px, py, pw, pw)
-    ctx.fillStyle = '#5e4630'
+    ctx.fillStyle = '#3e1c5e'
     ctx.font = `600 96px ${SERIF}`
     ctx.textBaseline = 'middle'
     ctx.fillText(initials(tribute.fullName), w / 2, py + pw / 2 + 4)
     ctx.textBaseline = 'alphabetic'
   }
   ctx.restore()
-  ctx.strokeStyle = '#c4aa78'
+  ctx.strokeStyle = '#cfae6a'
   ctx.lineWidth = 3
   roundRect(ctx, px, py, pw, pw, 125)
   ctx.stroke()
 
   // name
-  ctx.fillStyle = '#3a2b1d'
+  ctx.fillStyle = '#3e1c5e'
   ctx.font = `700 46px ${SERIF}`
   const nameLines = wrapLines(ctx, tribute.fullName, w - 110, 2)
   let y = py + pw + 62
@@ -300,7 +300,7 @@ export function drawPlaque(
 
   // rule
   y += 8
-  ctx.strokeStyle = '#c4aa78'
+  ctx.strokeStyle = '#cfae6a'
   ctx.lineWidth = 1.5
   ctx.beginPath()
   ctx.moveTo(w / 2 - 60, y)
@@ -309,7 +309,7 @@ export function drawPlaque(
   y += 38
 
   // preview
-  ctx.fillStyle = '#463a2e'
+  ctx.fillStyle = '#2a2233'
   ctx.font = `400 25px ${SANS}`
   ctx.textAlign = 'center'
   const maxPreviewLines = Math.max(2, Math.floor((h - y - 120) / 36))
@@ -321,10 +321,10 @@ export function drawPlaque(
   const bh = 52
   const bx = (w - bw) / 2
   const by = h - 112
-  ctx.fillStyle = '#5e4630'
+  ctx.fillStyle = '#3e1c5e'
   roundRect(ctx, bx, by, bw, bh, 26)
   ctx.fill()
-  ctx.fillStyle = '#fbf8f2'
+  ctx.fillStyle = '#fbf8fa'
   ctx.font = `600 22px ${SANS}`
   ctx.textBaseline = 'middle'
   ctx.fillText('Read more  →', w / 2, by + bh / 2 + 1)
@@ -338,8 +338,8 @@ export const LABEL_H = 256
 export function drawWallLabel(ctx: CanvasRenderingContext2D, title: string, subtitle: string) {
   ctx.clearRect(0, 0, LABEL_W, LABEL_H)
   const g = ctx.createLinearGradient(0, 0, 0, LABEL_H)
-  g.addColorStop(0, '#6a4f33')
-  g.addColorStop(1, '#4e3823')
+  g.addColorStop(0, '#3e1c5e')
+  g.addColorStop(1, '#2a153f')
   ctx.fillStyle = g
   ctx.fillRect(0, 0, LABEL_W, LABEL_H)
   ctx.strokeStyle = '#d9c28f'

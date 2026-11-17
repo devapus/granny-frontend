@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="rise-in">
           <p className="eyebrow mb-5">In loving memory{name ? ` of ${name}` : ''}</p>
           <h1 id="home-title" className="text-[length:var(--fs-3xl)]">
-            {config.data?.memorialTitle ?? 'House of Memories'}
+            {config.data?.memorialTitle ?? 'House of memories and tribute'}
           </h1>
           <div className="mt-7 max-w-xl">
             {config.isPending ? (

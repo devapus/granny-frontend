@@ -9,15 +9,15 @@ import type { Station } from './sceneMachine'
 import { getWood, useLabelTexture, usePortraitTexture } from './textures'
 
 const C = {
-  plaster: '#efe6d3',
-  plasterWarm: '#eadfc8',
-  wainscot: '#b49775',
-  wainscotCap: '#8a6a49',
-  frame: '#6b4f33',
-  brass: '#c2a263',
-  rug: '#b7ab8c',
-  rugEdge: '#9c8f6d',
-  leaf: '#788560',
+  plaster: '#f3ecf8',
+  plasterWarm: '#e8ddf0',
+  wainscot: '#b794d0',
+  wainscotCap: '#7a55a0',
+  frame: '#3e1c5e',
+  brass: '#cfae6a',
+  rug: '#dccde8',
+  rugEdge: '#b794d0',
+  leaf: '#7a55a0',
 }
 const FLOOR_TINTS = ['#a07c58', '#9a8260', '#a68a64', '#8d7556']
 
