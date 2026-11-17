@@ -21,33 +21,35 @@ export function TributeBody({ tribute, headingId }: { tribute: PublicTribute; he
     (p): p is NonNullable<typeof p> => Boolean(p?.url),
   )
   return (
-    <div>
-      <header className="flex items-center gap-4">
-        <TributeAvatar tribute={tribute} size={64} />
-        <div>
-          <h2 id={headingId} className="text-3xl leading-tight">
+    <div className="min-w-0">
+      <header className="flex items-start gap-3 sm:items-center sm:gap-4">
+        <div className="shrink-0">
+          <TributeAvatar tribute={tribute} size={64} />
+        </div>
+        <div className="min-w-0">
+          <h2 id={headingId} className="text-2xl leading-tight break-words sm:text-3xl">
             {tribute.fullName}
           </h2>
-          <p className="eyebrow mt-1">{tribute.relationshipLabel}</p>
+          <p className="eyebrow mt-1 break-words">{tribute.relationshipLabel}</p>
         </div>
       </header>
-      <div className="divider-ornament my-6" aria-hidden="true">
+      <div className="divider-ornament my-5 sm:my-6" aria-hidden="true">
         ✦
       </div>
       <div className="prose-memorial text-ink">{tribute.tributeText}</div>
       {photos.length > 0 && (
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
           {photos.map((p) => (
-            <li key={p.id}>
-              <figure>
+            <li key={p.id} className="min-w-0">
+              <figure className="min-w-0">
                 <img
                   src={p.url ?? undefined}
                   alt={p.altText || `Photograph shared by ${tribute.fullName}`}
                   loading="lazy"
-                  className="w-full rounded-lg border border-line object-cover shadow-md"
+                  className="h-auto w-full max-w-full rounded-lg border border-line object-cover shadow-md"
                   style={{ aspectRatio: p.width && p.height ? `${p.width} / ${p.height}` : '4 / 3' }}
                 />
-                {p.caption && <figcaption className="field-hint mt-2">{p.caption}</figcaption>}
+                {p.caption && <figcaption className="field-hint mt-2 break-words">{p.caption}</figcaption>}
               </figure>
             </li>
           ))}
@@ -111,25 +113,25 @@ function ReaderDialog({
         aria-modal="true"
         aria-labelledby="reader-title"
         tabIndex={-1}
-        className="relative flex max-h-[min(90vh,60rem)] w-full max-w-[760px] flex-col overflow-hidden rounded-xl border border-line bg-ivory-50 shadow-lg"
+        className="relative flex max-h-[min(90vh,60rem)] w-full min-w-0 max-w-[760px] flex-col overflow-hidden rounded-xl border border-line bg-ivory-50 shadow-lg"
         initial={from}
         animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
         exit={{ ...from, transition: { ...transition, duration: reduced ? 0 : 0.28 } }}
         transition={transition}
       >
-        <div className="flex items-center justify-between border-b border-line px-5 py-3">
+        <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3 sm:px-5">
           <p className="eyebrow">A tribute</p>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="btn btn-quiet btn-sm"
+            className="btn btn-quiet btn-sm shrink-0"
             aria-label="Close tribute"
           >
             <X size={16} aria-hidden="true" /> Close
           </button>
         </div>
-        <div className="overflow-y-auto px-5 py-7 sm:px-10 sm:py-10">
+        <div className="min-w-0 overflow-y-auto overflow-x-hidden px-4 py-6 sm:px-10 sm:py-10">
           <TributeBody tribute={tribute} headingId="reader-title" />
           <p className="mt-8">
             <Link to={`/tributes/${tribute.id}`} className="field-hint underline">

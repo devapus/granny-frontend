@@ -26,7 +26,7 @@ export default function TributesPage() {
   }
 
   return (
-    <div className="container-page py-14 md:py-20">
+    <div className="container-page min-w-0 py-10 sm:py-14 md:py-20">
       <PageHeading eyebrow="Tributes" title="Words from those who loved her">
         <p>Read the memories shared by family and friends, gathered by how they knew her.</p>
       </PageHeading>

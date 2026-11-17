@@ -193,6 +193,8 @@
     line-height: 1.8;
     color: var(--color-ink-soft);
     white-space: pre-line;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .btn {

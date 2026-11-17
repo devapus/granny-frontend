@@ -40,8 +40,11 @@ export function PublicLayout() {
         Skip to content
       </a>
       <header className="border-b border-line/70 bg-ivory-50/90">
-        <div className="container-page flex items-center justify-between gap-4 py-4">
-          <Link to="/" className="font-serif text-2xl font-semibold text-wood-900 no-underline hover:text-bronze-700">
+        <div className="container-page flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
+          <Link
+            to="/"
+            className="min-w-0 flex-1 font-serif text-lg font-semibold leading-snug text-wood-900 no-underline hover:text-bronze-700 sm:text-xl md:text-2xl"
+          >
             {config?.memorialTitle ?? 'House of memories and tribute'}
           </Link>
           <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
@@ -56,7 +59,7 @@ export function PublicLayout() {
           </nav>
           <button
             type="button"
-            className="btn btn-quiet md:hidden"
+            className="btn btn-quiet shrink-0 md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((o) => !o)}
