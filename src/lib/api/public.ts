@@ -108,21 +108,29 @@ export async function uploadMedia({ file, category, altText, caption, admin, sig
     signal,
   })
 
+  const putHeaders: Record<string, string> = {}
+  const contentType = target.upload.headers['Content-Type'] ?? target.upload.headers['content-type']
+  if (contentType) putHeaders['Content-Type'] = contentType
+
   let put: Response
   try {
     put = await fetch(target.upload.url, {
       method: target.upload.method || 'PUT',
-      headers: target.upload.headers,
+      headers: putHeaders,
       body: file,
       credentials: 'omit',
       signal,
     })
   } catch (e) {
     if (e instanceof DOMException && e.name === 'AbortError') throw e
-    throw new ApiError(0, 'NETWORK_ERROR', 'The photo could not be uploaded. Please check your connection and try again.')
+    throw new ApiError(
+      0,
+      'NETWORK_ERROR',
+      'The file could not be uploaded. If this keeps happening, configure CORS on the R2 bucket for your site origin (PUT + Content-Type).',
+    )
   }
   if (!put.ok) {
-    throw new ApiError(put.status, 'UPLOAD_FAILED', 'The photo could not be uploaded. Please try again.')
+    throw new ApiError(put.status, 'UPLOAD_FAILED', 'The file could not be uploaded. Please try again.')
   }
 
   const size = await imageSize(file)
