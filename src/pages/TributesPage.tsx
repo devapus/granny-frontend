@@ -84,16 +84,16 @@ export default function TributesPage() {
             </p>
           </EmptyState>
         ) : (
-          <div className="space-y-16">
+          <div className="min-w-0 space-y-16">
             {visibleGroups.map((g) => (
-              <section key={g.category.id} aria-labelledby={`cat-${g.category.id}`}>
-                <h2 id={`cat-${g.category.id}`} className="text-3xl">
+              <section key={g.category.id} className="min-w-0" aria-labelledby={`cat-${g.category.id}`}>
+                <h2 id={`cat-${g.category.id}`} className="text-2xl break-words sm:text-3xl">
                   {g.category.name}
                 </h2>
                 <div className="divider-ornament my-5" aria-hidden="true" />
-                <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {g.tributes.map((t) => (
-                    <li key={t.id}>
+                    <li key={t.id} className="min-w-0">
                       <TributeCard tribute={t} onRead={reader.open} />
                     </li>
                   ))}

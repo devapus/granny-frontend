@@ -16,7 +16,12 @@ const text =
 
 export const tributes = [
   { id: 't-friend', fullName: 'Margaret Ellis', cat: 'friends', label: 'Friends' },
-  { id: 't-grand', fullName: 'Oliver Whitfield', cat: 'grandchildren', label: 'Grandchildren' },
+  {
+    id: 't-grand',
+    fullName: 'Ayanfeoluwa Blessing Enirayetan (née Ibrahim)',
+    cat: 'grandchildren',
+    label: 'Granddaughter',
+  },
   { id: 't-child', fullName: 'Susan Whitfield', cat: 'children', label: 'Children' },
 ].map((t) => ({
   id: t.id,

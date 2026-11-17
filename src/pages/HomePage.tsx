@@ -64,8 +64,8 @@ export default function HomePage() {
         <h2 id="ways-title" className="sr-only">
           Ways to remember
         </h2>
-        <ul className="grid gap-5 md:grid-cols-3">
-          <li>
+        <ul className="grid min-w-0 gap-5 md:grid-cols-3">
+          <li className="min-w-0">
             <Link to="/tributes" className="card group block h-full p-7 no-underline transition-shadow hover:shadow-md">
               <ScrollText className="text-bronze-500" size={26} aria-hidden="true" />
               <span className="mt-4 block font-serif text-2xl text-wood-900">Read the tributes</span>
@@ -74,14 +74,14 @@ export default function HomePage() {
               </span>
             </Link>
           </li>
-          <li>
+          <li className="min-w-0">
             <Link to="/gallery" className="card group block h-full p-7 no-underline transition-shadow hover:shadow-md">
               <Images className="text-bronze-500" size={26} aria-hidden="true" />
               <span className="mt-4 block font-serif text-2xl text-wood-900">Look through photographs</span>
               <span className="mt-2 block text-ink-soft">A quiet gallery of moments the family has chosen to share.</span>
             </Link>
           </li>
-          <li>
+          <li className="min-w-0">
             <Link to="/submit" className="card group block h-full p-7 no-underline transition-shadow hover:shadow-md">
               <MessageSquareHeart className="text-bronze-500" size={26} aria-hidden="true" />
               <span className="mt-4 block font-serif text-2xl text-wood-900">Leave a tribute</span>
@@ -101,9 +101,9 @@ export default function HomePage() {
           <div className="divider-ornament mx-auto my-6 max-w-xs" aria-hidden="true">
             ✦
           </div>
-          <ul className="grid gap-5 md:grid-cols-3">
+          <ul className="grid min-w-0 gap-5 md:grid-cols-3">
             {featured.slice(0, 3).map((t) => (
-              <li key={t.id}>
+              <li key={t.id} className="min-w-0">
                 <TributeCard tribute={t} onRead={reader.open} />
               </li>
             ))}
